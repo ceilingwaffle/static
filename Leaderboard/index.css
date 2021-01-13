@@ -1,0 +1,53 @@
+@font-face {
+  font-family: "CustomFont";
+  src: url("./resources/Roboto-Bold.ttf");
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  width: 1920px;
+  height: 1080px;
+  font-family: "CustomFont";
+  background-color: #000000;
+  color: white;
+}
+
+#wrapper {
+  height: inherit;
+}
+#leaderboard {
+  position: absolute;
+  top: 200px;
+  left: 0;
+  width: 300px;
+  height: 600px;
+  border: 3px solid red;
+  opacity: 0;
+  transition: 200ms;
+  display: flexbox;
+}
+.lbPlayer {
+  display: block;
+  border: 3px solid green;
+  height: 100px;
+}
+#score {
+  position: absolute;
+  top: 0px;
+  right: 5px;
+  font-size: 80px;
+  color: white;
+  text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
+}
+
+#combo {
+  position: absolute;
+  bottom: 0px;
+  left: 10px;
+  font-size: 80px;
+  color: white;
+  text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
+  display: flex;
+}
