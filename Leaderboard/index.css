@@ -1,6 +1,6 @@
 @font-face {
   font-family: "CustomFont";
-  src: url("./resources/Roboto-Bold.ttf");
+  src: url("./resources/Aller_Bd.ttf");
 }
 
 body,
@@ -10,36 +10,89 @@ html {
   width: 1920px;
   height: 1080px;
   font-family: "CustomFont";
-  background-color: #000000;
   color: white;
 }
 
 #wrapper {
   height: inherit;
+  opacity: 0.8;
 }
 #leaderboard {
   position: absolute;
-  top: 200px;
+  top: 450px;
   left: 0;
-  width: 300px;
-  height: 600px;
-  border: 3px solid red;
+  height: 492px;
+  width: 192px;
+  /* border: 3px solid #222; */
   opacity: 0;
-  transition: 200ms;
+  transition: 150ms;
   display: flex;
   flex-direction: column;
 }
-.lbPlayer {
-  margin: 4px;
-  flex: 1;
-  border: 3px solid green;
-  height: 100px;
-  opacity: 1;
-  -webkit-transition: all 2s;
-  -moz-transition: all 2s;
-       transition: all 2s;
+.lbPlayer.ourPlayer {
+  background-color: #4a4a4a !important;
+  opacity: 1 !important;
+  display: block !important;
 }
-#score {
+.lbPlayer {
+  position: relative;
+  display: block;
+  margin: 0 0 7px 0;
+  background-color: #0e2d41 !important;
+  border: 1px solid black;
+  width: 192px;
+  height: 74px;
+  opacity: 1;
+  /* -webkit-transition: all 2s;
+  -moz-transition: all 2s;
+       transition: all 2s; */
+}
+.shown {
+  display: initial;
+}
+.notShown {
+  display: none;
+}
+.lbPlayer > * {
+  text-shadow: #000 1px 1px 1px;
+  -webkit-font-smoothing: antialiased;
+  position: absolute;
+}
+.lbPlayer > .lbPlayerName {
+  z-index: 4;
+  color: white;
+  font-size: 26px;
+  top: 0;
+  left: 0;
+  text-align: left;
+}
+.lbPlayer > .lbPlayerPosition {
+  z-index: 1;
+  color: white;
+  opacity: 0.4;
+  font-size: 40px;
+  top: 0px;
+  right: 7px;
+  text-align: right;
+}
+.lbPlayer > .lbPlayerScore {
+  z-index: 2;
+  color: white;
+  font-size: 18px;
+  left: 0;
+  bottom: 0;
+  text-align: left;
+}
+.lbPlayer > .lbPlayerCombo {
+  z-index: 3;
+  color: #39bfce;
+  font-size: 18px;
+  right: 4px;
+  bottom: 0;
+  text-align: right;
+}
+
+/* #score {
   position: absolute;
   top: 0px;
   right: 5px;
@@ -56,4 +109,4 @@ html {
   color: white;
   text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
   display: flex;
-}
+} */
