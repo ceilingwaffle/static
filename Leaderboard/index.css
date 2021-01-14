@@ -53,6 +53,9 @@ html {
 .notShown {
   display: none;
 }
+.dimmed {
+  opacity: 0.5;
+}
 .lbPlayer > * {
   text-shadow: #000 1px 1px 1px;
   -webkit-font-smoothing: antialiased;
@@ -65,12 +68,13 @@ html {
   top: 0;
   left: 0;
   text-align: left;
+  margin: 2px 0 0 4px;
 }
 .lbPlayer > .lbPlayerPosition {
   z-index: 1;
   color: white;
-  opacity: 0.4;
-  font-size: 40px;
+  opacity: 0.3;
+  font-size: 44px;
   top: 0px;
   right: 7px;
   text-align: right;
@@ -79,17 +83,19 @@ html {
   z-index: 2;
   color: white;
   font-size: 18px;
-  left: 0;
   bottom: 0;
+  left: 0;
   text-align: left;
+  margin: 0 0 2px 4px;
 }
 .lbPlayer > .lbPlayerCombo {
   z-index: 3;
   color: #39bfce;
   font-size: 18px;
-  right: 4px;
+  right: 0;
   bottom: 0;
   text-align: right;
+  margin: 0 4px 2px 0;
 }
 
 /* #score {

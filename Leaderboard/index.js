@@ -1,5 +1,5 @@
 const settings = {
-  leaderboardSlotsShown: 6,
+  leaderboardSlotsShown: 6, // How many leaderboard slots to show. At least 2 slots will always be shown; our player and slot at position #1.
 };
 
 let socket = new ReconnectingWebSocket("ws://127.0.0.1:24050/ws");
@@ -18,15 +18,7 @@ socket.onerror = (error) => {
   console.log("Socket Error: ", error);
 };
 
-// let animation = {
-//   acc: new CountUp("accdata", 0, 0, 2, 0.2, { useEasing: true, useGrouping: true, separator: " ", decimal: "." }),
-//   combo: new CountUp("combodata", 0, 0, 0, 0.2, { useEasing: true, useGrouping: true, separator: " ", decimal: "." }),
-// };
-
 let lbState;
-let lbStateBefore;
-// let ourPlayer;
-// let ourPlayerBefore;
 
 socket.onmessage = (event) => {
   let data = JSON.parse(event.data);
@@ -34,21 +26,19 @@ socket.onmessage = (event) => {
   let gameState = data.menu.state;
   let isPlaying = gameState == 2;
 
-  // ourPlayerBefore = ourPlayer;
-  // lbStateBefore = lbState;
   ourPlayer = data.gameplay.leaderboard.ourplayer;
   lbState = data.gameplay.leaderboard.slots;
 
+  // don't show leaderboard if no data to show
   if ((lbState && !lbState.length) || !ourPlayer) {
     return;
   };
 
+  // clear any previous leaderboard, and don't show if the map doesn't have a leaderboard
   if (!data.gameplay.leaderboard.hasLeaderboard) {
     leaderboardBox.innerHTML = "";
     return;
   }
-  console.log('a', isVisible, isPlaying);
-
 
   let mapStarting = false;
 
@@ -59,14 +49,14 @@ socket.onmessage = (event) => {
     isVisible = true;
     isPlaying = true;
   }
+  // TODO: Fix bug - leaderboard doesn't show until the player has at a score > 0
 
-  console.log('b', isVisible, isPlaying, mapStarting);
   handleLeaderboardVisibility(isVisible, isPlaying);
 
-  let leaderboxPlayerNodes = leaderboardBox.querySelectorAll(".lbPlayer");
 
   leaderboardBox.innerHTML = "";
 
+  // populate the leaderboard
   lbState.forEach((lbSlot) => {
     let newNode = createLeaderboardNode(lbSlot, ourPlayer);
     leaderboardBox.appendChild(newNode);
@@ -77,11 +67,13 @@ socket.onmessage = (event) => {
     leaderboardBox.appendChild(newNode);
   }
 
-  if (!leaderboxPlayerNodes.length) {
-    // render initial leaderboard
-  } else {
-    // update existing leaderboard
-  }
+  // TODO: Animation
+  let leaderboxPlayerNodes = leaderboardBox.querySelectorAll(".lbPlayer");
+  // if (!leaderboxPlayerNodes.length) {
+  //   // render initial leaderboard
+  // } else {
+  //   // update existing leaderboard
+  // }
 };
 
 function createLeaderboardNode(lbSlot, ourPlayer) {
@@ -93,12 +85,12 @@ function createLeaderboardNode(lbSlot, ourPlayer) {
   }
 
   const x = settings.leaderboardSlotsShown;
-  if (lbSlot.position == 1) {
+  if (lbSlot.position == 1 || ourPlayer.position == lbSlot.position) {
     newNode.classList.add("shown");
   } else if (ourPlayer.position.between(1, x) && lbSlot.position.between(1, x)) {
-    newNode.classList.add("shown");
+    newNode.classList.add("shown", "dimmed");
   } else if (lbSlot.position.between(ourPlayer.position - x + 2, ourPlayer.position)) {
-    newNode.classList.add("shown");
+    newNode.classList.add("shown", "dimmed");
   } else {
     newNode.classList.add("notShown");
   }
@@ -116,10 +108,7 @@ function generateLeaderboardPlayerInnerHtml(playerSlot) {
 function handleLeaderboardVisibility(isVisible, isPlaying) {
   if (!isPlaying) {
     leaderboardBox.style.opacity = 0;
-    return;
-  }
-  
-  if (!isVisible) {
+  } else if (!isVisible) {
     leaderboardBox.style.opacity = 1;
   } else {
     leaderboardBox.style.opacity = 0;
