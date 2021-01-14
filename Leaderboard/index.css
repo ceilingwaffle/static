@@ -26,12 +26,18 @@ html {
   border: 3px solid red;
   opacity: 0;
   transition: 200ms;
-  display: flexbox;
+  display: flex;
+  flex-direction: column;
 }
 .lbPlayer {
-  display: block;
+  margin: 4px;
+  flex: 1;
   border: 3px solid green;
   height: 100px;
+  opacity: 1;
+  -webkit-transition: all 2s;
+  -moz-transition: all 2s;
+       transition: all 2s;
 }
 #score {
   position: absolute;
