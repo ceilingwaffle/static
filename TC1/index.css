@@ -1,0 +1,121 @@
+@font-face {
+  font-family: "Custom-Font";
+  src: url("./resources/MPLUSRounded1c-ExtraBold.ttf");
+}
+
+body,
+html {
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  font-family: "Custom-Font";
+}
+
+.ifFcpp {
+  position: absolute;
+  background: linear-gradient(272.81deg, #0f0f0f 0%, #0c0c0c 100%), #0f0f0f;
+  box-shadow: 0px 0px 10px #000000;
+  border-radius: 10px;
+  color: #582a7d;
+  font-size: 18px;
+  padding: 5px;
+  top: 10px;
+  left: 325px;
+  transform: translateX(-50%);
+  transition: 300ms ease-in-out;
+  opacity: 0;
+}
+#ifFcpp {
+  color: white;
+}
+
+.base {
+  /* position: absolute; */
+  height: 100vh;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.9);
+  top: 25px;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.base > p {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  line-height: 14px;
+  width: 500px;
+  height: 20px;
+  border-bottom: 1px solid black;
+  font-size: 14px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.pp {
+  position: absolute;
+  color: #582a7d;
+  display: flex;
+  justify-content: center;
+  padding-top: 2px;
+  font-size: 30px;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+#pp {
+  color: white;
+}
+.progress {
+  position: absolute;
+  width: 178px;
+  height: 4px;
+  top: 15px;
+  left: 10px;
+  background-color: #272727;
+  border-radius: 4px;
+}
+#progress {
+  height: 4px;
+  width: 50%;
+  border-radius: 4px;
+  background-color: #582a7d;
+  transition: 300ms;
+}
+.hitsLine {
+  position: absolute;
+  display: flex;
+  justify-content: space-around;
+  color: white;
+  font-size: 20px;
+  width: 178px;
+  margin-left: 10px;
+  bottom: 10px;
+}
+.hits {
+  width: 60px;
+  text-align: center;
+}
+
+.hitsUnderline {
+  height: 4px;
+  width: 8px;
+  border-radius: 2px;
+  margin: 0 auto 0 auto;
+}
+
+#hunUnderline {
+  background-color: #2a7d3d;
+  box-shadow: 0 0 10px #2a7d3d;
+}
+
+#fivUnderline {
+  background-color: #2a377d;
+  box-shadow: 0 0 10px #2a377d;
+}
+
+#missUnderline {
+  background-color: #7d2a2a;
+  box-shadow: 0 0 10px #7d2a2a;
+}
